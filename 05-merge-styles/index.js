@@ -4,6 +4,14 @@ const fs = require('fs')
 const allStylesPath = path.join(__dirname, 'styles')
 const bundlePath = path.join(__dirname, 'project-dist')
 
+fs.writeFile(
+    path.join(bundlePath, 'bundle.css'),
+    '',
+    (err) => {
+        if (err) throw err
+    }
+)
+
 fs.readdir(allStylesPath, (err, files) => {
     files.forEach((file, index) => {
         const filePath = path.join(allStylesPath, file)
@@ -19,7 +27,6 @@ fs.readdir(allStylesPath, (err, files) => {
                             data,
                             err => {
                                 if (err) throw err;
-                                console.log('file is added')
                             }
                         )
                     }
